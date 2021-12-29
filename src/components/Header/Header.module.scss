@@ -1,0 +1,16 @@
+$mainColor: #343A40;
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    max-width: 1440px;
+    height: 100px;
+    background-color: $mainColor;
+}
+
+.header__button {
+    width: 170px;
+    height: 40px;
+    border-radius: 5px;
+}
