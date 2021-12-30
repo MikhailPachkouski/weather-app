@@ -14,3 +14,13 @@ $mainColor: #343A40;
     height: 40px;
     border-radius: 5px;
 }
+
+
+@media screen and (max-width: 768px){
+    .header__wrapper {
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: center;
+        height: 200px;
+    }
+}

@@ -1,0 +1,13 @@
+.bold {
+    font-weight: bold;
+}
+
+.toggle-button {
+    cursor: pointer;
+    padding: .5rem 1rem;
+    border: 1px solid black;
+    width: 150px;
+    background-color: white;
+    border-radius: 5px;
+    user-select: none;
+}
