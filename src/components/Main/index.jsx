@@ -1,19 +1,16 @@
 import React from "react";
+import MainCurrent from "../MainCurrent/MainCurrent";
+import MainHourly from "../MainHourly/MainHourly";
 import cl from "./Main.module.scss";
 
-const Main = ({ weatherData = null, units, date, days }) => {
+const Main = ({ weatherData = null, weatherDataHourly = null, units, date, days }) => {
   return (
-    <div>
-      {weatherData ? (
-        <div>
-          <h2>{weatherData?.name}</h2>
-          <h3>{days[date?.getDay()]} {date?.getHours()}:{date?.getMinutes()}</h3>
-          <h2>{weatherData?.main.temp} {units === "metric" ? "C" : "F"}°</h2>
-          <h2>{weatherData?.weather[0].description}</h2>
-        </div>
-      ) : (
-        <p>Введите город</p>
-      )}
+    <div className={cl.mainWrapper}>
+      <MainCurrent weatherData={weatherData} units={units} date={date} days={days}/>
+      {/* <MainHourly weatherDataHourly={weatherDataHourly} units={units} date={date}/> */}
+      <MainHourly weatherData={weatherData} units={units} date={date}/>
+      <MainHourly weatherData={weatherData} units={units} date={date}/>
+      <MainHourly weatherData={weatherData} units={units} date={date}/>
     </div>
   );
 };
