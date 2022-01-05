@@ -1,4 +1,5 @@
 import React from 'react'
+import cl from './MainHourly.module.scss'
 
 const MainHourly = ({
 	weatherData = null,

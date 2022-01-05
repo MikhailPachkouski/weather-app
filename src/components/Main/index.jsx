@@ -12,30 +12,45 @@ const Main = ({
 }) => {
 	return (
 		<div className={cl.mainWrapper}>
-			<MainCurrent
-				weatherData={weatherData}
-				units={units}
-				date={date}
-				days={days}
-			/>
-			<MainHourly
-				weatherData={weatherData}
-				weatherDataHourly={weatherDataHourly}
-				units={units}
-				h={0}
-			/>
-			<MainHourly
-				weatherData={weatherData}
-				weatherDataHourly={weatherDataHourly}
-				units={units}
-				h={1}
-			/>
-			<MainHourly
-				weatherData={weatherData}
-				weatherDataHourly={weatherDataHourly}
-				units={units}
-				h={2}
-			/>
+			<div>
+				<MainCurrent
+					weatherData={weatherData}
+					units={units}
+					date={date}
+					days={days}
+				/>
+			</div>
+
+			<div className={cl.hourlyWrapper}>
+				<div className={cl.hourlyItem}>
+					<MainHourly
+						weatherData={weatherData}
+						weatherDataHourly={weatherDataHourly}
+						units={units}
+						h={0}
+					/>
+					<MainHourly
+						weatherData={weatherData}
+						weatherDataHourly={weatherDataHourly}
+						units={units}
+						h={1}
+					/>
+				</div>
+				<div className={cl.hourlyItem}>
+					<MainHourly
+						weatherData={weatherData}
+						weatherDataHourly={weatherDataHourly}
+						units={units}
+						h={2}
+					/>
+					<MainHourly
+						weatherData={weatherData}
+						weatherDataHourly={weatherDataHourly}
+						units={units}
+						h={3}
+					/>
+				</div>
+			</div>
 		</div>
 	)
 }
