@@ -1,23 +1,38 @@
 import React from 'react'
 
-const MainHourly = ({weatherData = null, units, date}) => {
-  return (
-    <div>
-        { weatherData && 
-          <div>
-          <h3>{date?.getHours()}:{date?.getMinutes()}</h3>
-          <div><img src={`http://openweathermap.org/img/wn/${weatherData?.weather[0].icon}@2x.png`} alt="" /></div>
-          <h3>{weatherData?.main.temp} {units === "metric" ? "C" : "F"}°</h3>
+const MainHourly = ({
+	weatherData = null,
+	weatherDataHourly = null,
+	units,
+	h,
+}) => {
+	const time = new Date(weatherDataHourly?.hourly[h]?.dt * 1000)
+	const weatherH = weatherDataHourly?.hourly[h]
 
-          {/* <h3>{weatherDataHourly?.hourly[0].dt.getHours()}:{weatherDataHourly?.hourly[0].dt.getMinutes()}</h3>
+	return (
+		<div>
+			{weatherData && (
+				<div>
+					<h3>
+						{time?.getHours()}:0{time?.getMinutes()}
+					</h3>
+					<div>
+						<img
+							src={`http://openweathermap.org/img/wn/${weatherH?.weather[0].icon}@2x.png`}
+							alt=''
+						/>
+					</div>
+					<h3>
+						{weatherH?.temp} {units === 'metric' ? 'C' : 'F'}°
+					</h3>
+
+					{/* <h3>{weatherDataHourly?.hourly[0].dt.getHours()}:{weatherDataHourly?.hourly[0].dt.getMinutes()}</h3>
           <div><img src={`http://openweathermap.org/img/wn/${weatherDataHourly?.hourly[0].weather[0].icon}@2x.png`} alt="" /></div>
           <h3>{weatherDataHourly?.hourly[0].temp} {units === "metric" ? "C" : "F"}°</h3> */}
-          </div>
-          
-        
-        }
-    </div>
-  )
+				</div>
+			)}
+		</div>
+	)
 }
 
 export default MainHourly
