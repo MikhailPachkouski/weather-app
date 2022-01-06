@@ -11,7 +11,7 @@ const MainHourly = ({
 	const weatherH = weatherDataHourly?.hourly[h]
 
 	return (
-		<div>
+		<div className={cl.wrapper}>
 			{weatherData && (
 				<div>
 					<h3>

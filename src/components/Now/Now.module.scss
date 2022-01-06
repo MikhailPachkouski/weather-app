@@ -1,0 +1,38 @@
+.nowWrapper {
+	font-size: 18px;
+	line-height: 21px;
+	max-width: 1440px;
+	min-height: 220px;
+	background-color: #343a40;
+	p {
+		color: white;
+	}
+}
+
+.infoBlocks {
+	display: flex;
+	justify-content: space-around;
+	column-gap: 10px;
+	margin: 14px 135px 57px;
+	color: white !important;
+}
+
+.nowTitle {
+	text-align: left;
+	padding: 22px 0 0 15px;
+	margin: 0;
+}
+
+.bold {
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+@media screen and (max-width: 600px) {
+	.infoBlocks {
+		flex-direction: column;
+		justify-content: space-around;
+		align-content: center;
+	}
+}

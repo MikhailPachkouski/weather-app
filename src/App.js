@@ -2,6 +2,7 @@ import './App.scss'
 import Header from './components/Header'
 import Main from './components/Main'
 import { useEffect, useState } from 'react'
+import Now from './components/Now/Now'
 
 function App() {
 	const [weatherData, setWeatherData] = useState(null)
@@ -89,6 +90,11 @@ function App() {
 				setUnits={setUnits}
 				updateWeatherData={updateWeatherData}
 			/>
+			{!weatherData && (
+				<div style={{ textAlign: 'center', marginTop: '20px' }}>
+					Введите город
+				</div>
+			)}
 			<Main
 				weatherData={weatherData}
 				weatherDataHourly={weatherDataHourly}
@@ -96,6 +102,7 @@ function App() {
 				date={date}
 				days={days}
 			/>
+			<Now weatherDataHourly={weatherDataHourly} />
 		</div>
 	)
 }

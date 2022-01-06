@@ -4,7 +4,7 @@ import cl from './MainCurrent.module.scss'
 const MainCurrent = ({ weatherData = null, units, date, days }) => {
 	return (
 		<div>
-			{weatherData ? (
+			{weatherData && (
 				<div className={cl.mainCurrentWrapper}>
 					<h2 className={cl.mainCurrentCity}>{weatherData?.name}</h2>
 					<h3 className={cl.mainCurrentDate}>
@@ -23,8 +23,6 @@ const MainCurrent = ({ weatherData = null, units, date, days }) => {
 						/>
 					</p> */}
 				</div>
-			) : (
-				<p style={{ textAlign: 'center' }}>Введите город</p>
 			)}
 		</div>
 	)
