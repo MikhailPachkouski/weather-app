@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import { useEffect, useState } from 'react'
 import Now from './components/Now/Now'
+import MainDaily from "./components/MainDaily/MainDaily";
 
 function App() {
 	const [weatherData, setWeatherData] = useState(null)
@@ -103,6 +104,7 @@ function App() {
 				days={days}
 			/>
 			<Now weatherDataHourly={weatherDataHourly} />
+			<MainDaily weatherDataHourly={weatherDataHourly} days={days}/>
 		</div>
 	)
 }
