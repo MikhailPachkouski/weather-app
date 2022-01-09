@@ -1,40 +1,41 @@
 import React from 'react'
 import cl from './Now.module.scss'
 
-const Now = ({ weatherDataHourly = null }) => {
+const Now = ({ weatherDataHourly = null, units }) => {
 	return (
 		<>
 			{weatherDataHourly && (
 				<div className={cl.nowWrapper}>
 					<div>
-						<p className={cl.nowTitle}>Now</p>
+						<p className={cl.nowTitle}>Сейчас</p>
 					</div>
 					<div>
 						<div className={cl.infoBlocks}>
 							<div>
-								<p>Feels like</p>
+								<p>Ощущается как</p>
 								<p className={cl.bold}>
-									{weatherDataHourly.current.feels_like} C°
+									{weatherDataHourly.current.feels_like}{' '}
+									{units === 'metric' ? 'C' : 'F'}°
 								</p>
 							</div>
 							<div>
-								<p>Humidity</p>
+								<p>Влажность</p>
 								<p className={cl.bold}>{weatherDataHourly.current.humidity}%</p>
 							</div>
 							<div>
-								<p>Wind Speed</p>
+								<p>Скорость ветра</p>
 								<p className={cl.bold}>
-									{weatherDataHourly.current.wind_speed} k/h
+									{weatherDataHourly.current.wind_speed} к/ч
 								</p>
 							</div>
 							<div>
-								<p>Visiblity</p>
+								<p>Видимость</p>
 								<p className={cl.bold}>
-									{weatherDataHourly.current.visibility / 1000} km
+									{weatherDataHourly.current.visibility / 1000} км
 								</p>
 							</div>
 							<div>
-								<p>Pressure</p>
+								<p>Давление</p>
 								<p className={cl.bold}>
 									{weatherDataHourly.current.pressure} hPa
 								</p>
