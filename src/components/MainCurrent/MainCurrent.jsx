@@ -8,7 +8,9 @@ const MainCurrent = ({ weatherData = null, units, date, days }) => {
 				<div className={cl.mainCurrentWrapper}>
 					<h2 className={cl.mainCurrentCity}>{weatherData?.name}</h2>
 					<h3 className={cl.mainCurrentDate}>
-						{days[date?.getDay()]} {date?.getHours()}:{date?.getMinutes()}
+						{days[date?.getDay()]} {date?.getHours()}:
+						{~~(date?.getMinutes() / 10) < 1 ? '0' : ''}
+						{date?.getMinutes()}
 					</h3>
 					<h2 className={cl.mainCurrentDescription}>
 						{weatherData?.weather[0].description}
