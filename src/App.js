@@ -1,20 +1,20 @@
-import './App.scss'
-import Header from './components/Header'
-import Main from './components/Main'
-import { useEffect, useState } from 'react'
-import Now from './components/Now/Now'
-import MainDaily from './components/MainDaily/MainDaily'
+import './App.scss';
+import Header from './components/Header';
+import Main from './components/Main';
+import { useEffect, useState } from 'react';
+import Now from './components/Now/Now';
+import MainDaily from './components/MainDaily/MainDaily';
 
 function App() {
-	const [weatherData, setWeatherData] = useState(null)
-	const [weatherDataHourly, setWeatherDataHourly] = useState(null)
-	const [units, setUnits] = useState('metric')
-	const [date, setDate] = useState(null)
-	const [lon, setLon] = useState(null)
-	const [lat, setLat] = useState(null)
+	const [weatherData, setWeatherData] = useState(null);
+	const [weatherDataHourly, setWeatherDataHourly] = useState(null);
+	const [units, setUnits] = useState('metric');
+	const [date, setDate] = useState(null);
+	const [lon, setLon] = useState(null);
+	const [lat, setLat] = useState(null);
 
-	const appId = '7628ffc9153adeb88ae859e5b77eaca5'
-	const lang = 'ru'
+	const appId = '7628ffc9153adeb88ae859e5b77eaca5';
+	const lang = 'ru';
 	// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 	const days = [
 		'Воскресенье',
@@ -24,17 +24,17 @@ function App() {
 		'Четверг',
 		'Пятница',
 		'Суббота',
-	]
+	];
 
 	const updateWeatherData = async city => {
-		setWeatherData(await fetchWeather(city))
-	}
+		setWeatherData(await fetchWeather(city));
+	};
 
 	const fetchWeather = city => {
 		var requestOptions = {
 			method: 'GET',
 			redirect: 'follow',
-		}
+		};
 
 		return fetch(
 			`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appId}&units=${units}&lang=${lang}`,
@@ -44,17 +44,22 @@ function App() {
 			.then(async result => {
 				setWeatherDataHourly(
 					await fetchWeatherHourly(result.coord.lon, result.coord.lat)
-				)
-				return result
+				);
+				return result;
 			})
-			.catch(error => console.log('error', error))
-	}
+			.catch(error => {
+				alert('Такой город не найден! Проверьте название.');
+				setWeatherData(null);
+				console.log(weatherData);
+				console.log('error', error);
+			});
+	};
 
 	const fetchWeatherHourly = (lon, lat) => {
 		var requestOptions = {
 			method: 'GET',
 			redirect: 'follow',
-		}
+		};
 
 		return fetch(
 			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=alerts,minutely&appid=${appId}&units=${units}&lang=${lang}`,
@@ -62,27 +67,29 @@ function App() {
 		)
 			.then(response => response.json())
 			.then(result => result)
-			.catch(error => console.log('error', error))
-	}
+			.catch(error => {
+				console.log('error', error);
+			});
+	};
 
 	useEffect(() => {
 		if (weatherData) {
-			updateWeatherData(weatherData?.name)
+			updateWeatherData(weatherData?.name);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [units])
+	}, [units]);
 
 	useEffect(() => {
 		if (weatherData) {
-			setDate(new Date(weatherData?.dt * 1000))
+			setDate(new Date(weatherData?.dt * 1000));
 			// console.log(date);
 			// updateLon();
 			// updateLat();
 			// updateWeatherDataHourly(lon, lat);
-			console.log(weatherDataHourly)
-			console.log(weatherData)
+			console.log(weatherDataHourly);
+			console.log(weatherData);
 		}
-	}, [weatherData])
+	}, [weatherData]);
 
 	return (
 		<div className='App'>
@@ -96,21 +103,25 @@ function App() {
 					Введите город
 				</div>
 			)}
-			<Main
-				weatherData={weatherData}
-				weatherDataHourly={weatherDataHourly}
-				units={units}
-				date={date}
-				days={days}
-			/>
-			<Now weatherDataHourly={weatherDataHourly} units={units} />
-			<MainDaily
-				weatherDataHourly={weatherDataHourly}
-				days={days}
-				units={units}
-			/>
+			{weatherData && (
+				<>
+					<Main
+						weatherData={weatherData}
+						weatherDataHourly={weatherDataHourly}
+						units={units}
+						date={date}
+						days={days}
+					/>
+					<Now weatherDataHourly={weatherDataHourly} units={units} />
+					<MainDaily
+						weatherDataHourly={weatherDataHourly}
+						days={days}
+						units={units}
+					/>
+				</>
+			)}
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;

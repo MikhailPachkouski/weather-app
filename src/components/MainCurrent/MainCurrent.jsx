@@ -9,7 +9,9 @@ const MainCurrent = ({ weatherData = null, units, date, days }) => {
 					<h2 className={cl.mainCurrentCity}>{weatherData?.name}</h2>
 					<h3 className={cl.mainCurrentDate}>
 						{days[date?.getDay()]} {date?.getHours()}:
+
 						{~~(date?.getMinutes() / 10) < 1 ? '0' : ''}
+
 						{date?.getMinutes()}
 					</h3>
 					<h2 className={cl.mainCurrentDescription}>
