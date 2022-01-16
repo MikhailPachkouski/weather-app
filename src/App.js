@@ -100,7 +100,7 @@ function App() {
 			/>
 			{!weatherData && (
 				<div style={{ textAlign: 'center', marginTop: '20px' }}>
-					Введите город
+					<strong>Введите название города</strong>
 				</div>
 			)}
 			{weatherData && (

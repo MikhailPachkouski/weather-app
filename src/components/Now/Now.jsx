@@ -25,7 +25,7 @@ const Now = ({ weatherDataHourly = null, units }) => {
 							<div>
 								<p>Скорость ветра</p>
 								<p className={cl.bold}>
-									{weatherDataHourly.current.wind_speed} к/ч
+									{weatherDataHourly.current.wind_speed} км/ч
 								</p>
 							</div>
 							<div>
