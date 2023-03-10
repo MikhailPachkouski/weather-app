@@ -1,2 +1,2 @@
 
-https://weather42-app.herokuapp.com/
+https://weather-app-chi-one-88.vercel.app/
